@@ -1,3 +1,6 @@
+using ITGadgetSite.Model.Models;
+using static System.Net.WebRequestMethods;
+
 namespace ITGadgetSite.Web;
 
 public class ApiClient(HttpClient httpClient)
@@ -6,4 +9,5 @@ public class ApiClient(HttpClient httpClient)
     {
         return httpClient.GetFromJsonAsync<T>(path);
     }
+
 }
