@@ -9,20 +9,20 @@ namespace ITGadgetSite.ApiService.Controllers
     [ApiController]
     public class GadgetController(IGadgetService gadgetService) : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("get-all-gadget")]
         public async Task<IActionResult> GetAllGadget(CancellationToken cancellationToken)
         {
             var result = await gadgetService.GetAllGadgetAsync(cancellationToken);
             return StatusCode(result.StatusCode, result);
         }
 
-        //[HttpPost("create")]
-        //public async Task<IActionResult> CreateGadget([FromBody] CreateGadgetDto request, CancellationToken cancellationToken)
-        //{
-        //    var response = await gadgetService.CreateGadgetAsync(request, cancellationToken);
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateGadget([FromBody] CreateGadgetDto request, CancellationToken cancellationToken)
+        {
+            var response = await gadgetService.CreateGadgetAsync(request, cancellationToken);
 
-        //    return StatusCode(response.StatusCode, response);
-        //}
+            return StatusCode(response.StatusCode, response);
+        } 
 
         //[HttpPut("{gadgetId}")]
         //public async Task<IActionResult> UpdateGadget([FromRoute] Guid gadgetId, CreateGadgetDto request, CancellationToken cancellationToken)

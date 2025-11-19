@@ -1,3 +1,4 @@
+using Blazored.Toast;
 using ITGadgetSite.Web;
 using ITGadgetSite.Web.Components;
 
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add service defaults & Aspire client integrations.
 builder.AddServiceDefaults();
 builder.AddRedisOutputCache("cache");
+builder.Services.AddBlazoredToast();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

@@ -14,12 +14,10 @@ namespace ITGadgetSite.Web.Components.Pages.Gadget
         public IEnumerable<ITGadget> GadgetModels { get; set; }
         protected override async Task OnInitializedAsync()
         {
-            var response = await ApiClient.GetFromJsonAsync<BaseResponse<IEnumerable<ITGadget>>>("/api/Gadget");
-            //var response = await Api.GetGadgetsAsync();
+            var response = await ApiClient.GetFromJsonAsync<BaseResponse<IEnumerable<ITGadget>>>("/api/Gadget/get-all-gadget");
             if (response != null && response.Success)
             {
                 GadgetModels = response.Data.ToList();
-                //GadgetModels = JsonConvert.DeserializeObject<IEnumerable<ITGadget>>(response.Data.ToString());
             }
             await base.OnInitializedAsync();
         }
