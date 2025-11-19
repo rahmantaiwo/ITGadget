@@ -11,7 +11,7 @@ namespace ITGadgetSite.ApiService.Controllers
     {
         [HttpGet("get-all-gadget")]
         public async Task<IActionResult> GetAllGadget(CancellationToken cancellationToken)
-        {
+               {
             var result = await gadgetService.GetAllGadgetAsync(cancellationToken);
             return StatusCode(result.StatusCode, result);
         }
@@ -22,28 +22,28 @@ namespace ITGadgetSite.ApiService.Controllers
             var response = await gadgetService.CreateGadgetAsync(request, cancellationToken);
 
             return StatusCode(response.StatusCode, response);
-        } 
+        }
 
-        //[HttpPut("{gadgetId}")]
-        //public async Task<IActionResult> UpdateGadget([FromRoute] Guid gadgetId, CreateGadgetDto request, CancellationToken cancellationToken)
-        //{
-        //    var response = await gadgetService.UpdateGadgetAsync(gadgetId, request, CancellationToken.None);
-        //    return StatusCode(response.StatusCode, response);
-        //}
+        [HttpPut("{gadgetId:guid}")]
+        public async Task<IActionResult> UpdateGadget([FromRoute] Guid gadgetId, CreateGadgetDto request, CancellationToken cancellationToken)
+        {
+            var response = await gadgetService.UpdateGadgetAsync(gadgetId, request, CancellationToken.None);
+            return StatusCode(response.StatusCode, response);
+        }
 
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetGadgetById([FromRoute] Guid id, CancellationToken cancellationToken)
-        //{
-        //    var response = await gadgetService.GetGadgetByIdAsync(id, cancellationToken);
-        //    return StatusCode(response.StatusCode, response);
-        //}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetGadgetById([FromRoute] Guid id, CancellationToken cancellationToken)
+        {
+            var response = await gadgetService.GetGadgetByIdAsync(id, cancellationToken);
+            return StatusCode(response.StatusCode, response);
+        }
 
-        //[HttpDelete]
-        //public async Task<IActionResult> DeleteGadget([FromRoute] Guid id, CancellationToken cancellationToken)
-        //{
-        //    var response = await gadgetService.DeleteGadgetAsync(id, cancellationToken);
-        //    return StatusCode(response.StatusCode, response);
-        //}
+        [HttpDelete]
+        public async Task<IActionResult> DeleteGadget([FromRoute] Guid id, CancellationToken cancellationToken)
+        {
+            var response = await gadgetService.DeleteGadgetAsync(id, cancellationToken);
+            return StatusCode(response.StatusCode, response);
+        }
     }
 }

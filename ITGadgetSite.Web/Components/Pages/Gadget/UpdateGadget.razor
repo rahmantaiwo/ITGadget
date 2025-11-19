@@ -1,8 +1,14 @@
-﻿@page "/gadget/create"
+﻿@page "/gadget/update/{gadgetId:guid}" 
 
-<h3>CreateGadget</h3>
+<h3>UpdateGadget</h3>
 
-<EditForm Model="Model" OnValidSubmit="Submit">
+@if (Model == null)
+{
+    <p>Loading gadget data....</p>
+}
+else
+{
+    <EditForm Model="Model" OnValidSubmit="Submit">
     <div class="container">
         <div class="row mb-3">
             <div class="col-md-6">
@@ -17,7 +23,7 @@
             </div>
 
             <div class="row mb-3">
-                <div class="col-md-6">  
+                <div class="col-md-6">
                     <label>Price</label>
                     <InputNumber class="form-control" @bind-Value="Model.Price" />
                     <ValidationMessage For="() => Model.Price" />
@@ -32,3 +38,6 @@
         <button class="btn btn-secondary" type="submit">Submit</button>
     </div>
 </EditForm>
+}
+
+

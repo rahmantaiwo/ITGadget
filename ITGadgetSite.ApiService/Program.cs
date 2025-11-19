@@ -28,6 +28,16 @@ builder.Services.AddScoped<IGadgetService, GadgetService>();
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowAll", policy =>
+//    {
+//        policy.AllowAnyOrigin()
+//              .AllowAnyHeader()
+//              .AllowAnyMethod();
+//    });
+//});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
