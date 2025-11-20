@@ -11,7 +11,7 @@ namespace ITGadgetSite.ApiService.Controllers
     {
         [HttpGet("get-all-gadget")]
         public async Task<IActionResult> GetAllGadget(CancellationToken cancellationToken)
-               {
+        {
             var result = await gadgetService.GetAllGadgetAsync(cancellationToken);
             return StatusCode(result.StatusCode, result);
         }
@@ -39,7 +39,7 @@ namespace ITGadgetSite.ApiService.Controllers
             return StatusCode(response.StatusCode, response);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGadget([FromRoute] Guid id, CancellationToken cancellationToken)
         {
             var response = await gadgetService.DeleteGadgetAsync(id, cancellationToken);

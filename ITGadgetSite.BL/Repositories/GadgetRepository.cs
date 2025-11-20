@@ -18,7 +18,7 @@ namespace ITGadgetSite.BL.Repositories
         public async Task DeleteAsync(ITGadget iTGadget, CancellationToken cancellationToken)
         {
             dbContext.Gadgets.Remove(iTGadget);
-            await dbContext.SaveChangesAsync(cancellationToken);
+            await dbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<ITGadget>> GetAllAsync(CancellationToken cancellationToken)
@@ -39,7 +39,7 @@ namespace ITGadgetSite.BL.Repositories
         public Task UpdateAsync(ITGadget iTGadget, CancellationToken cancellationToken)
         {
             dbContext.Gadgets.Update(iTGadget);
-            return dbContext.SaveChangesAsync(cancellationToken);
+            return dbContext.SaveChangesAsync();
         }
     }
 }
